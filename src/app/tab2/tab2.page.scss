@@ -1,0 +1,29 @@
+ion-content {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --padding-top: 10px;
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        .img{
+            height: 150px;
+            width: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .name {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .role {
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .desc{
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    }
+}

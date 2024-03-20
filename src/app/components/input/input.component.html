@@ -1,0 +1,12 @@
+<ion-row class="main">
+  <ion-col size="auto" *ngIf="startIcon">
+    <ion-icon [name]="startIcon"></ion-icon>
+  </ion-col>
+  <ion-col class="inputCol">
+    <ion-input [placeholder]="placeholder" (ionInput)="updateValue($event)" [type]="type"></ion-input>
+  </ion-col>
+  <ion-col size="auto" *ngIf="secure">
+    <ion-icon name="eye-outline" (click)="updateType('text')" *ngIf="type=='password'"></ion-icon>
+    <ion-icon name="eye-off-outline" (click)="updateType('password')" *ngIf="type!='password'"></ion-icon>
+  </ion-col>
+</ion-row>

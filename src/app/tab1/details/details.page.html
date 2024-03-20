@@ -1,0 +1,14 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding ion-no-margin">
+    <ion-back-button slot="start"></ion-back-button>
+    <ion-title>{{character.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img class="characterImg" [src]="character.imageUrl">
+  <ion-grid class="userDetail">
+    <span class="name"><b>Name:</b> {{character.fullName}}</span>
+    <span class="family"><b>Family:</b> {{character.family}}</span>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,15 @@
+ion-content{
+    .characterImg{
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .userDetail{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        span{
+            font-size: 14px;
+        }
+    }
+}
