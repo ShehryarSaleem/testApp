@@ -1,3 +1,10 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="ion-no-padding ion-no-margin">
+    <ion-title>Characters List</ion-title>
+    <ion-icon name="log-out-outline" color="danger" (click)="logout()" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-row class="characterItem" *ngIf="utils.loading">
     <ion-col size="auto">
