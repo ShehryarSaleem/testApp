@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
+import { UtilsService } from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { NavController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   public loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder,public navCtrl:NavController,) {
+  constructor(private fb: FormBuilder,public navCtrl:NavController,private utils:UtilsService) {
     this.loginForm = this.fb.group({
       email: ["", [Validators.required, Validators.pattern('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$'),
       ]],
@@ -31,6 +32,8 @@ export class LoginPage implements OnInit {
     if(body.email=='a@a.com'&& body.password=='112233'){
       localStorage.setItem('isLoggedIn','true');
       this.navCtrl.navigateRoot(['/tabs']);
+    }else{
+      this.utils.presentToast("Email/Password is incorrect",3000,"danger",'bottom');
     }
   }
 
