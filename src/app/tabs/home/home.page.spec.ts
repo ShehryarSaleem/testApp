@@ -50,7 +50,7 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('hould populate charactersList with 53 characters on initialization', async () => {
+  it('should populate charactersList with 53 characters on initialization', async () => {
 
     const mockCharactersList = new Array(53).fill({ id: 1, name: 'Character' });
     httpCallServiceSpy.getList.and.stub().and.returnValue(Promise.resolve(mockCharactersList));
