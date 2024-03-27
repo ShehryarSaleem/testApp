@@ -7,27 +7,26 @@ import { UtilsService } from '../utils/utils.service';
   providedIn: 'root'
 })
 export class AuthService {
-
-
   constructor(
     private http: HttpClient,
     private utils: UtilsService,
   ) { }
 
   async apiCall(requestType: any, endpoint: any, body: any) {
-    var options = { body: body }
+    const options = { body: body };
     this.utils.loading = true;
-    var promise = new Promise<void>((resolve, reject) => {
-      this.http.request(requestType, environment.apiBaseUrl + endpoint, options).subscribe((response: any) => {
-        resolve(response);
-        this.utils.loading = false;
-      }),
+    return new Promise<void>((resolve, reject) => {
+      this.http.request(requestType, environment.apiBaseUrl + endpoint, options).subscribe(
+        (response: any) => {
+          this.utils.loading = false;
+          resolve(response);
+        },
         (error: any) => {
           this.utils.loading = false;
           reject(error);
+          this.utils.presentToast(error.message, 3000, "danger", "bottom");
         }
+      );
     });
-    return promise;
   }
-
 }

@@ -16,7 +16,7 @@ export class AppComponent {
     this.platform.ready().then(async () => {
       const status=localStorage.getItem('isLoggedIn');
       if(status=='true'){
-        this.navCtrl.navigateRoot('tabs/tab1');
+        this.navCtrl.navigateRoot('tabs/home');
       }
       this.hideSplash();
     })

@@ -1,34 +1,42 @@
 import { Component } from '@angular/core';
-import { HttpCallService } from '../services/auth/http-call.service';
-import { Characters } from './CharacterModal';
 import { NavigationExtras } from '@angular/router';
 import { ActionSheetController, NavController } from '@ionic/angular';
-import { UtilsService } from '../services/utils/utils.service';
+
+//Services
+import { HttpCallService } from 'src/app/services/http/http-call.service';
+import { UtilsService } from 'src/app/services/utils/utils.service';
+
+//Interface
+import { Characters } from './CharacterInterface';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss']
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss']
 })
-export class Tab1Page {
-  charactersList:Characters[]=[];
-  constructor(private httpCall:HttpCallService, private navCtrl:NavController,public utils:UtilsService,private actionSheetCtrl:ActionSheetController) {}
+export class HomePage {
+
+  public charactersList: Characters[] = [];
+  constructor(private httpCall: HttpCallService, private navCtrl: NavController, public utils: UtilsService, private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
-    this.httpCall.getList().then((res:any)=>{
-      this.charactersList=res;
+    this.httpCall.getList().then((res: any) => {
+      this.charactersList = res;
     })
   }
-  detail(character:Characters){
+
+
+  detail(character: Characters) {
     let navigationExtras: NavigationExtras = {
       state: {
         character: character
       }
     };
-    this.navCtrl.navigateForward(['tabs/tab1/details'],navigationExtras);
+    this.navCtrl.navigateForward(['tabs/home/details'], navigationExtras);
   }
-  async logout(){
 
+
+  async logout() {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
@@ -48,7 +56,6 @@ export class Tab1Page {
         },
       ],
     });
-
     await actionSheet.present();
   }
 
