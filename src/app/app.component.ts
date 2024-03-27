@@ -20,10 +20,6 @@ export class AppComponent {
 
       this.translate.setDefaultLang('en');
       this.translate.use('en');
-      const status=localStorage.getItem('isLoggedIn');
-      if(status=='true'){
-        this.navCtrl.navigateRoot('tabs/home');
-      }
       this.hideSplash();
     })
   }
