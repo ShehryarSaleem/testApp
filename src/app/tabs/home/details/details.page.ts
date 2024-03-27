@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Characters } from '../CharacterInterface';
+import { Characters } from '../../../interfaces/CharacterInterface';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -9,7 +9,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./details.page.scss'],
 })
 export class DetailsPage implements OnInit {
-  character!: Characters;
+  character: Characters | undefined;
   constructor(public router: Router,public navCtrl:NavController) { }
   ngOnInit() {
     const currentNavigation = this.router.getCurrentNavigation();

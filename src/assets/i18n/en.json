@@ -1,0 +1,20 @@
+{
+    "login": {
+        "loginPage": "Login Page",
+        "email": "Email",
+        "password": "Password",
+        "login": "Login"
+    },
+    "tabs": {
+        "home": "Home",
+        "info": "Info"
+    },
+    "home": {
+        "title": "Characters List"
+    },
+    "random": {
+        "logout": "Logout",
+        "cancel": "Cancel",
+        "back": "Back"
+    }
+}

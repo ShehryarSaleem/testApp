@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpCallService } from './http-call.service';
 import { AuthService } from '../auth/auth.service';
-import { Characters } from '../../tabs/home/CharacterInterface';
+import { Characters } from '../../interfaces/CharacterInterface';
 
 describe('HttpCallService', () => {
   let service: HttpCallService;

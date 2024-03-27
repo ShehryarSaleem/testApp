@@ -1,16 +1,19 @@
 <ion-content>
   <div class="outerDiv">
-      <ion-grid class="mainGrid">
-        <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-        <ion-row class="heading">Login Page</ion-row>
+    <ion-grid class="mainGrid">
+      <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+        <ion-row class="heading">{{"login.loginPage" | translate}}</ion-row>
         <app-input startIcon="mail-outline" type="email"
-          placeholder="Email" (value)="updateValue('email',$event)"></app-input>
+          placeholder="{{ 'login.email' | translate }}"
+          (value)="updateValue('email',$event)"></app-input>
         <app-input startIcon="lock-closed-outline" type="password"
-          [secure]="true" placeholder="Password" (value)="updateValue('password',$event)"></app-input>
-          <ion-row class="buttonRow">
-            <ion-button type="submit" [disabled]="!loginForm.valid">Login</ion-button>
-          </ion-row>
-        </form>
-      </ion-grid>
+          [secure]="true" placeholder="{{ 'login.password' | translate }}"
+          (value)="updateValue('password',$event)"></app-input>
+        <ion-row class="buttonRow">
+          <ion-button type="submit"
+            [disabled]="!loginForm.valid">{{"login.login" | translate}}</ion-button>
+        </ion-row>
+      </form>
+    </ion-grid>
   </div>
 </ion-content>

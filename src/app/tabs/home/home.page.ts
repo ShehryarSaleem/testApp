@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { NavigationExtras } from '@angular/router';
 import { ActionSheetController, NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 //Services
 import { HttpCallService } from 'src/app/services/http/http-call.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 
 //Interface
-import { Characters } from './CharacterInterface';
+import { Characters } from '../../interfaces/CharacterInterface';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,12 @@ import { Characters } from './CharacterInterface';
 export class HomePage {
 
   public charactersList: Characters[] = [];
-  constructor(private httpCall: HttpCallService, private navCtrl: NavController, public utils: UtilsService, private actionSheetCtrl: ActionSheetController) { }
+  constructor(
+    private translate: TranslateService, 
+    private httpCall: HttpCallService, 
+    private navCtrl: NavController, 
+    public utils: UtilsService, 
+    private actionSheetCtrl: ActionSheetController) { }
 
   ngOnInit() {
     this.httpCall.getList().then((res: any) => {
@@ -40,7 +46,7 @@ export class HomePage {
     const actionSheet = await this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Logout',
+          text: this.translate.instant('random.logout'),
           role: 'destructive',
           handler: () => {
             localStorage.clear();
@@ -48,7 +54,7 @@ export class HomePage {
           }
         },
         {
-          text: 'Cancel',
+          text: this.translate.instant('random.cancel'),
           role: 'cancel',
           data: {
             action: 'cancel',

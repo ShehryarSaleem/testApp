@@ -4,6 +4,9 @@ import { NavController, ActionSheetController } from '@ionic/angular';
 import { HttpCallService } from 'src/app/services/http/http-call.service';
 import { UtilsService } from 'src/app/services/utils/utils.service';
 import { of } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateServiceStub } from 'src/app/app.component.spec';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -19,12 +22,15 @@ describe('HomePage', () => {
 
     TestBed.configureTestingModule({
       declarations: [HomePage],
+      imports: [TranslateModule],
       providers: [
         { provide: NavController, useValue: navSpy },
         { provide: HttpCallService, useValue: httpCallService },
         { provide: ActionSheetController, useValue: actionSheetCtrlSpyObj },
+        { provide: TranslateService, useClass: TranslateServiceStub },
         UtilsService
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
     navCtrlSpy = TestBed.inject(NavController) as jasmine.SpyObj<NavController>;

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@capacitor/splash-screen';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -9,11 +11,15 @@ import { SplashScreen } from '@capacitor/splash-screen';
 })
 export class AppComponent {
   constructor(
-    private platform: Platform,public navCtrl:NavController) {
+    private platform: Platform,public navCtrl:NavController,
+    private translate: TranslateService,) {
     this.initializeApp()
   }
   initializeApp(){
     this.platform.ready().then(async () => {
+
+      this.translate.setDefaultLang('en');
+      this.translate.use('en');
       const status=localStorage.getItem('isLoggedIn');
       if(status=='true'){
         this.navCtrl.navigateRoot('tabs/home');
